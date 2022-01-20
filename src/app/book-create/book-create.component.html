@@ -1,0 +1,61 @@
+
+<form [formGroup]="bookForm" class="form-container">
+    <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>New Book</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input formControlName="title" minlength="120" minlength="10" matInput type="text" placeholder="Title">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input formControlName="subtitle" matInput type="text"placeholder="Subtitle">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input formControlName="isbn" maxlength="10" matInput type="text"placeholder="ISBN">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input formControlName="author" matInput type="text"placeholder="Author">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input formControlName="publisher" maxlength="60" minlength="5" matInput type="text" placeholder="Publisher">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input formControlName="published" matInput type="text" placeholder="Published">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input formControlName="pages" maxlength="4" matInput type="text" placeholder="Pages">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input formControlName="website" matInput type="text" placeholder="Website">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <textarea formControlName="description" maxlength="512" matInput type="text"placeholder="Description"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="back()" mat-raised-button color="primary">Back</button>
+          <button (click)="save()" mat-raised-button color="primary" [disabled]="!bookForm.valid">Save</button>
+        </mat-card-actions>
+      </mat-card>
+</form>

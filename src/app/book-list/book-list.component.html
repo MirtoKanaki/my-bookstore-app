@@ -1,0 +1,35 @@
+<mat-form-field class="form-field" appearance="fill">
+    <input matInput type="text" [(ngModel)]="search">
+    <button *ngIf="search" matSuffix mat-icon-button aria-label="Search" (click)="filterBooksList()">
+        <mat-icon>search</mat-icon>
+    </button>
+    <button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>
+<br>
+<button class="button" (click)="newBook()" mat-raised-button color="primary">New</button>
+<br>
+<ng-container *ngIf="booksList$ | async; else noResults">
+    <ng-container *ngFor="let book of booksList$ | async">
+        <mat-card class="card">
+            <img mat-card-image src="https://media.geeksforgeeks.org/wp-content/uploads/20190814094403/html-and-css.jpg">
+            <mat-card-header>
+                <mat-card-title>
+                    {{book.title}}
+                </mat-card-title>
+                <mat-card-subtitle>
+                    {{book.subtitle}}
+                    {{book.pages}}
+                </mat-card-subtitle>
+                <mat-card-actions>
+                    <a mat-raised-button target="_blank" (click)="bookView(book.isbn)">Info</a>
+                </mat-card-actions>
+            </mat-card-header>
+        </mat-card>
+    </ng-container>
+</ng-container>
+
+<ng-template #noResults>
+    <p>No results</p>
+</ng-template>
